@@ -1,0 +1,24 @@
+# Python
+Arquivos_Globais.py
+CRM.py
+teste.py
+*.pyc
+__pycache__/
+.venv/
+
+# Java
+teste.c
+
+# Excel e imagens
+crm (4).xlsx
+relatorio_analise_universal.xlsx
+relatorio_crm_analise.xlsx
+graficos_categoricos.png
+graficos_numericos.png
+valores_faltantes.png
+
+# VSCode
+.vscode/
+
+# Output
+output/
