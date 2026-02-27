@@ -7,10 +7,14 @@ __pycache__/
 .venv/
 
 # Java
+*.class
+teste.java
+
+# C
 teste.c
 
 # Excel e imagens
-crm (4).xlsx
+crm  (4).xlsx
 relatorio_analise_universal.xlsx
 relatorio_crm_analise.xlsx
 graficos_categoricos.png
