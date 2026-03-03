@@ -185,82 +185,118 @@
 
 <main>
 
-  <div class="sec-title">Comparação Direta de Recursos</div>
-  <div class="sec-sub">Cada linha mostra exatamente o que cada versão oferece — e o que falta em cada uma.</div>
+  <div class="sec-title">Comparação Visual dos Dashboards</div>
+  <div class="sec-sub">Como cada informação era apresentada antes — e como passa a ser apresentada com a IA.</div>
 
-  <div class="col-headers">
+  <div class="col-headers" style="grid-template-columns: 1fr 1fr 1fr;">
     <div class="col-h trad"> Dashboard Tradicional</div>
-    <div class="col-h vs">Veredito</div>
-    <div class="col-h ia"> Dashboard com IA (Voz Ativa)</div>
+    <div class="col-h ia"> Dashboard da IA</div>
+    <div class="col-h" style="background:#f0f4ff; color:#4a5568; font-size:.9em;"> Valeu a mudança?</div>
   </div>
 
-  <!-- VERDE -->
-  <div class="cmp-row green">
-    <div class="cell"><strong>✅ Volume de Atendimentos</strong>Contagem bruta de ligações por período, agente e fila. Base de qualquer relatório operacional.</div>
-    <div class="verdict"><span class="verdict-icon">🟢</span><span class="verdict-label">Ambos têm — igual</span></div>
-    <div class="cell"><strong>✅ Volume de Atendimentos</strong>Mesmo dado. Na versão IA, a linha de Sentimento Geral é sobreposta no gráfico de tendência.</div>
+  <!-- KPIs PRINCIPAIS -->
+  <div class="cmp-row green" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="cell">
+      <strong>KPIs no topo</strong>
+      Volume total, resolução, espera e conformidade exibidos como números simples em linha, sem destaque visual forte.
+    </div>
+    <div class="cell">
+      <strong>BANs em destaque</strong>
+      Os mesmos 4 números (1540 atendimentos, 85% resolução, 120s espera, 92% conformidade) agora em cartões grandes com ícone e rótulo — leitura instantânea em menos de 5 segundos.
+    </div>
+    <div class="cell" style="background:#f0f9ff; border-top: 3px solid #1f8fd1;">
+      <strong>Sim, valeu.</strong> A informação é a mesma, mas o cartão grande força o olho do gestor para o número certo na hora certa. Menos chance de ignorar um número crítico.
+    </div>
   </div>
 
-  <div class="cmp-row green">
-    <div class="cell"><strong>✅ TMA e Tempo de Espera</strong>Tempo médio de atendimento e espera na fila — KPIs clássicos de eficiência operacional.</div>
-    <div class="verdict"><span class="verdict-icon">🟢</span><span class="verdict-label">Ambos têm — igual</span></div>
-    <div class="cell"><strong>✅ TMA e Tempo de Espera</strong>Mesmos campos. Apresentados como BANs (Big Ass Numbers) em cartões de KPI no topo do painel.</div>
+  <!-- SENTIMENTO / SANKEY -->
+  <div class="cmp-row green" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="cell">
+      <strong>Jornada do cliente</strong>
+      Não havia visualização de fluxo emocional. O gestor via apenas se a ligação foi "resolvida" ou não — sem saber como o cliente se sentiu durante o processo.
+    </div>
+    <div class="cell">
+      <strong>Diagrama de Sankey (fluxo de sentimento)</strong>
+      Mostra visualmente quantos clientes entraram Frustrated, Confused ou Satisfied — e para onde cada grupo foi ao final. Dá pra ver de cara se a operação está revertendo ou piorando o humor dos clientes.
+    </div>
+    <div class="cell" style="background:#f0f9ff; border-top: 3px solid #1f8fd1;">
+      <strong>Sim, valeu.</strong> É uma visualização que simplesmente não existia antes. Transforma algo invisível (emoção do cliente) em dado visual imediato.
+    </div>
   </div>
 
-  <div class="cmp-row green">
-    <div class="cell"><strong>✅ Rastreabilidade (Protocolo, CPF, Agente)</strong>Dados de auditoria: número do protocolo, ID do agente, grupo e ramal. Essencial para a ANS.</div>
-    <div class="verdict"><span class="verdict-icon">🟢</span><span class="verdict-label">Ambos têm — igual</span></div>
-    <div class="cell"><strong>✅ Rastreabilidade (Protocolo, CPF, Agente)</strong>Os mesmos campos existem e são usados para drill-down na Tabela de Detalhes interativa.</div>
+  <!-- TEMAS / BARRAS -->
+  <div class="cmp-row green" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="cell">
+      <strong>Motivos de contato</strong>
+      Lista ou tabela simples com os temas tabulados manualmente pelos agentes. Inconsistente e sujeito a erro humano.
+    </div>
+    <div class="cell">
+      <strong>Gráfico de barras por tema (IA categoriza)</strong>
+      Barras horizontais com os temas identificados automaticamente pela IA — NEGATIVA_COBERTURA, STATUS_AUTORIZACAO, AGENDAMENTO etc. — coloridas pela proporção de sentimento negativo.
+    </div>
+    <div class="cell" style="background:#f0f9ff; border-top: 3px solid #1f8fd1;">
+      <strong>Sim, valeu.</strong> Além de mais confiável (sem depender do agente), a cor por sentimento negativo transforma a barra em um alerta visual — o gestor vê de imediato qual tema está gerando mais frustração.
+    </div>
   </div>
 
-  <!-- AMARELO -->
-  <div class="cmp-row yellow">
-    <div class="cell"><strong>⚠️ Silêncio na Ligação — em segundos brutos</strong>Registrado como número absoluto. Requer análise manual para saber se o valor é problemático.<span class="tag tag-yellow">Análise manual</span></div>
-    <div class="verdict"><span class="verdict-icon">🟡</span><span class="verdict-label">Parecido — mais inteligente na IA</span></div>
-    <div class="cell"><strong>⚠️ Taxa de Silêncio — % da duração total</strong>Calculada automaticamente. Cruzada com duração no Scatter Plot para revelar ligações-problema de forma visual.<span class="tag tag-blue">Campo calculado</span></div>
+  <!-- HEATMAP DE AGENTES -->
+  <div class="cmp-row yellow" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="cell">
+      <strong>Performance de agentes</strong>
+      Tabela com métricas de cada agente: volume, TMA, taxa de resolução. Linhas e colunas — requer leitura linha por linha para identificar quem está mal.
+    </div>
+    <div class="cell">
+      <strong>Heatmap (mapa de calor)</strong>
+      Grade colorida onde cada célula é um agente vs. critério de qualidade. Cores quentes (laranja/vermelho) saltam aos olhos imediatamente — o gestor não precisa ler nada para saber quem precisa de atenção.
+    </div>
+    <div class="cell" style="background:#fffbeb; border-top: 3px solid #f9a825;">
+      <strong>Mudou bastante, para melhor.</strong> A tabela ainda existe (para detalhe), mas o heatmap age como um alarme visual — identifica o problema antes mesmo de o gestor terminar de carregar a tela.
+    </div>
   </div>
 
-  <div class="cmp-row yellow">
-    <div class="cell"><strong>⚠️ Status de Resolução — tabulação manual</strong>Preenchido pelo próprio agente. Sujeito a erro, esquecimento e manipulação intencional.<span class="tag tag-yellow">Sujeito a erro humano</span></div>
-    <div class="verdict"><span class="verdict-icon">🟡</span><span class="verdict-label">Parecido — origem diferente</span></div>
-    <div class="cell"><strong>⚠️ Taxa de Resolução (FCR) — calculada e validada</strong>Campo calculado automático. Cruzado com sentimento final para confirmar se a resolução foi real ou apenas registrada.<span class="tag tag-blue">Campo calculado</span></div>
+  <!-- TABELA DE DETALHES -->
+  <div class="cmp-row yellow" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="cell">
+      <strong>Detalhe das ligações</strong>
+      Tabela sempre visível com todas as ligações, protocolos, CPFs e dados granulares. Muito dado na tela ao mesmo tempo — poluição visual para um gestor que quer ver tendências.
+    </div>
+    <div class="cell">
+      <strong>Tabela oculta + Viz in Tooltip</strong>
+      A tabela de detalhes fica escondida por padrão. Quando o gestor clica num agente ou tema, ela aparece filtrada. E ao passar o mouse em qualquer ponto do gráfico, uma janela mostra o resumo da ligação gerado pela IA.
+    </div>
+    <div class="cell" style="background:#fffbeb; border-top: 3px solid #f9a825;">
+      <strong>Mudou, e a tela ficou muito mais limpa.</strong> O dado continua lá — só aparece quando o gestor realmente precisa dele. Menos ruído, mais foco.
+    </div>
   </div>
 
-  <div class="cmp-row yellow">
-    <div class="cell"><strong>⚠️ QA Manual — amostragem de ~5% das ligações</strong>Monitor ouve ligações aleatórias e atribui nota. Alta subjetividade, baixíssima cobertura.<span class="tag tag-yellow">Amostragem parcial</span></div>
-    <div class="verdict"><span class="verdict-icon">🟡</span><span class="verdict-label">Parecido — cobertura muito maior</span></div>
-    <div class="cell"><strong>⚠️ IRC Score — IA avalia 100% das ligações</strong>4 pilares automáticos: Cordialidade, Precisão, Resolução, Empatia. Cada nota tem justificativa em texto.<span class="tag tag-blue">100% das ligações</span></div>
+  <!-- CONFORMIDADE RN623 -->
+  <div class="cmp-row red" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="cell">
+      <strong>Conformidade RN623</strong>
+      Verificada manualmente por monitores de qualidade em ~5% das ligações. Sem visualização dedicada no dashboard — aparecia apenas em relatórios avulsos.
+    </div>
+    <div class="cell">
+      <strong>Score RN623 como KPI e cor no heatmap</strong>
+      Aparece como BAN no topo (ex: 92%) e como dimensão de cor no heatmap de agentes. 100% das ligações avaliadas. O gestor vê o risco regulatório na mesma tela que vê o volume.
+    </div>
+    <div class="cell" style="background:#fdecea; border-top: 3px solid #e53935;">
+      <strong>Mudança crítica.</strong> Antes era invisível no dia a dia. Agora é um número que está sempre na tela. Para uma empresa regulada pela ANS, essa mudança sozinha já justifica o projeto.
+    </div>
   </div>
 
-  <!-- VERMELHO -->
-  <div class="cmp-row red">
-    <div class="cell ghost">Não existe.<br/>Para entender o que aconteceu, o gestor precisava ouvir o áudio completo.</div>
-    <div class="verdict"><span class="verdict-icon">🔴</span><span class="verdict-label">Só na IA</span></div>
-    <div class="cell"><strong>🤖 Sentimento do Cliente (Inicial → Final)</strong>Captura o estado emocional ao entrar e ao sair. O gestor vê se o agente reverteu a situação ou piorou.<span class="tag tag-red">Exclusivo IA</span></div>
-  </div>
-
-  <div class="cmp-row red">
-    <div class="cell ghost">Não existe.<br/>Conformidade RN623 era verificada manualmente, em amostragem pequena.</div>
-    <div class="verdict"><span class="verdict-icon">🔴</span><span class="verdict-label">Só na IA</span></div>
-    <div class="cell"><strong>🤖 Score RN623 — Conformidade Automática (100%)</strong>Avaliação automática contra a Resolução Normativa 623 da ANS em todas as ligações. Classifica: Conforme, Risco Moderado ou Risco Crítico.<span class="tag tag-red">Exclusivo IA</span></div>
-  </div>
-
-  <div class="cmp-row red">
-    <div class="cell ghost">Não existe.<br/>Tema era tabulado manualmente pelo agente — impreciso e inconsistente.</div>
-    <div class="verdict"><span class="verdict-icon">🔴</span><span class="verdict-label">Só na IA</span></div>
-    <div class="cell"><strong>🤖 Categorização Automática de Temas</strong>A IA identifica o motivo real: STATUS_AUTORIZACAO, DIFICULDADE_ACESSO_REDE, NEGATIVA_COBERTURA etc. Sem depender do agente.<span class="tag tag-red">Exclusivo IA</span></div>
-  </div>
-
-  <div class="cmp-row red">
-    <div class="cell ghost">Não existe.<br/>Transcrever o que aconteceu exigia ouvir o áudio ou monitoria manual.</div>
-    <div class="verdict"><span class="verdict-icon">🔴</span><span class="verdict-label">Só na IA</span></div>
-    <div class="cell"><strong>🤖 Resumo + Diálogo + Justificativas por Pilar</strong>Resumo automático, trechos transcritos e justificativas de cada nota — acessíveis passando o mouse em qualquer ponto do gráfico (Viz in Tooltip).<span class="tag tag-red">Exclusivo IA</span></div>
-  </div>
-
-  <div class="cmp-row red">
-    <div class="cell ghost">Não existe.<br/>Alertas de risco eram identificados só após auditoria humana — geralmente tarde demais.</div>
-    <div class="verdict"><span class="verdict-icon">🔴</span><span class="verdict-label">Só na IA</span></div>
-    <div class="cell"><strong>🤖 Observações de Risco (Judicialização / ANS)</strong>Alertas automáticos quando a IA detecta risco de processo judicial, reclamação à ANS ou violação de prazo.<span class="tag tag-red">Exclusivo IA</span></div>
+  <!-- NAVEGAÇÃO / INTERATIVIDADE -->
+  <div class="cmp-row red" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="cell">
+      <strong>Navegação entre dados</strong>
+      Dashboard estático. Para cruzar informações (ex: ver quais agentes atenderam ligações sobre um tema específico), era necessário exportar para Excel e filtrar manualmente.
+    </div>
+    <div class="cell">
+      <strong>Dashboard Actions (filtros interativos)</strong>
+      Clicar em um tema filtra automaticamente todo o painel — KPIs, heatmap e tabela se atualizam em tempo real. Clicar num agente mostra só as ligações dele. Tudo conectado, sem exportar nada.
+    </div>
+    <div class="cell" style="background:#fdecea; border-top: 3px solid #e53935;">
+      <strong>Mudança grande.</strong> Transforma o dashboard de um relatório em uma ferramenta de investigação. O gestor consegue ir do geral ao detalhe em segundos, sem sair da tela.
+    </div>
   </div>
 
   <hr class="divider" />
