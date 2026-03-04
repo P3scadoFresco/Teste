@@ -375,20 +375,20 @@
 
   <div class="calc-grid">
     <div class="calc-card">
-      <div class="calc-title">📊 Taxa de Resolução (FCR)</div>
+      <div class="calc-title">Taxa de Resolução (FCR)</div>
       <div class="calc-desc">Mede eficácia em resolver no primeiro contato. Quanto maior, menor o retrabalho.</div>
       <div class="code-block">SUM(IF [Status Resolução] = 'resolved'
   THEN 1 ELSE 0 END)
 / COUNT([Protocolo])</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title">🔇 Taxa de Silêncio (%)</div>
+      <div class="calc-title">Taxa de Silêncio (%)</div>
       <div class="calc-desc">Percentual da ligação em silêncio. Acima de 30% indica lentidão no sistema ou agente despreparado.</div>
       <div class="code-block">SUM([Silêncio (s)])
 / SUM([Duração (s)])</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title">😤 → 😊 Jornada Emocional</div>
+      <div class="calc-title">Jornada Emocional</div>
       <div class="calc-desc">Categoriza o esforço do agente em reverter clientes frustrados. Identifica os melhores para coaching.</div>
       <div class="code-block">IF [Sent. Inicial] = 'Frustrated'
 AND [Sent. Final] = 'Satisfied'
@@ -403,7 +403,7 @@ ELSE 'Outros'
 END</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title">⚖️ Classificação de Risco RN623</div>
+      <div class="calc-title">Classificação de Risco RN623</div>
       <div class="calc-desc">Simplifica análise regulatória em 3 níveis. Facilita coloração do Heatmap de conformidade.</div>
       <div class="code-block">IF [Nível Conformidade] = 'Conforme'
   THEN 'Baixo Risco 🟢'
