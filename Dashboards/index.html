@@ -82,6 +82,7 @@
     }
     .col-h.trad { background: var(--blue-pale); color: var(--blue-dark); }
     .col-h.ia   { background: #dff3ff; color: var(--blue-light); }
+    .col-h.vs   { color: var(--muted); font-size: .82em; display: flex; align-items: center; justify-content: center; }
     .cmp-row {
       display: grid; grid-template-columns: 1fr 1fr 1fr;
       gap: 0; margin-bottom: 10px; border-radius: 12px;
@@ -95,6 +96,11 @@
     .green .cell    { background: var(--green-bg); border-top: 3px solid var(--green-bdr); }
     .red   .cell    { background: var(--red-bg);   border-top: 3px solid var(--red-bdr); }
     .yellow .cell   { background: var(--yellow-bg);border-top: 3px solid var(--yellow-bdr); }
+    .ghost {
+      background: #f5f5f5; border-top: 3px solid #ddd;
+      display: flex; align-items: center; justify-content: center;
+      color: #bbb; font-style: italic; font-size: .86em; padding: 16px; text-align: center;
+    }
     .tag {
       display: inline-block; padding: 2px 8px; border-radius: 20px;
       font-size: .76em; font-weight: 700; margin-top: 2px;
@@ -174,10 +180,10 @@
   <div class="col-headers">
     <div class="col-h trad">Dashboard Tradicional</div>
     <div class="col-h ia">Dashboard da IA</div>
-    <div class="col-h trad" >Opinião</div>
+    <div class="col-h trad">Opinião</div>
   </div>
 
-  <!-- KPIs -->
+  <!-- KPIs PRINCIPAIS -->
   <div class="cmp-row green">
     <div class="cell">
       <strong>KPIs no topo</strong>
@@ -192,7 +198,7 @@
     </div>
   </div>
 
-  <!-- SANKEY -->
+  <!-- SENTIMENTO / SANKEY -->
   <div class="cmp-row green">
     <div class="cell">
       <strong>Jornada do cliente</strong>
@@ -207,7 +213,7 @@
     </div>
   </div>
 
-  <!-- TEMAS -->
+  <!-- TEMAS / BARRAS -->
   <div class="cmp-row green">
     <div class="cell">
       <strong>Motivos de contato</strong>
@@ -218,11 +224,11 @@
       Barras horizontais com os temas identificados automaticamente pela IA — NEGATIVA_COBERTURA, STATUS_AUTORIZACAO, AGENDAMENTO etc. — coloridas pela proporção de sentimento negativo.
     </div>
     <div class="cell" style="background:#e6f9ee; border-top: 3px solid #27ae60;">
-      <strong>✅ Boa mudança.</strong> Mais confiável e mais visual. O único risco é a IA categorizar um tema errado — e o gestor confiar na barra sem questionar.
+      <strong>✅ Boa mudança.</strong> Mais confiável e mais visual. O único risco é a IA categorizar um tema errado e o gestor confiar na barra sem questionar.
     </div>
   </div>
 
-  <!-- HEATMAP -->
+  <!-- HEATMAP DE AGENTES -->
   <div class="cmp-row yellow">
     <div class="cell">
       <strong>Performance de agentes</strong>
@@ -233,41 +239,41 @@
       Grade colorida onde cada célula é um agente vs. critério de qualidade. Cores quentes (laranja/vermelho) saltam aos olhos imediatamente — o gestor não precisa ler nada para saber quem precisa de atenção.
     </div>
     <div class="cell" style="background:#fff8e1; border-top: 3px solid #f9a825;">
-      <strong>⚠️ Boa, mas com ressalva.</strong> O heatmap é visualmente superior para identificar problemas rapidamente. Porém a tabela não deveria sumir — o agente que quer entender o próprio desempenho em detalhe ainda precisa dela.
+      <strong>⚠️ Boa, mas com ressalva.</strong> O heatmap é visualmente superior para identificar problemas rapidamente. Porém a tabela não deveria sumir o agente que quer entender o próprio desempenho em detalhe ainda precisa dela.
     </div>
   </div>
 
-  <!-- TABELA OCULTA -->
+  <!-- TABELA DE DETALHES -->
   <div class="cmp-row yellow">
     <div class="cell">
       <strong>Detalhe das ligações</strong>
-      Tabela sempre visível com todas as ligações, protocolos, CPFs e dados granulares. Muito dado na tela ao mesmo tempo — poluição visual para um gestor que quer ver tendências.
+      Tabela sempre visível com todas as ligações, protocolos, CPFs e dados granulares. Muito dado na tela ao mesmo tempo poluição visual para um gestor que quer ver tendências.
     </div>
     <div class="cell">
       <strong>Tabela oculta + Viz in Tooltip</strong>
       A tabela de detalhes fica escondida por padrão. Quando o gestor clica num agente ou tema, ela aparece filtrada. E ao passar o mouse em qualquer ponto do gráfico, uma janela mostra o resumo da ligação gerado pela IA.
     </div>
     <div class="cell" style="background:#fff8e1; border-top: 3px solid #f9a825;">
-      <strong>⚠️ Boa, mas com ressalva.</strong> A tela ficou mais limpa, mas o Viz in Tooltip depende de o gestor saber que precisa passar o mouse. Quem não for treinado nunca descobre que aquilo existe — e perde a funcionalidade mais rica do dashboard.
+      <strong>⚠️ Boa, mas com ressalva.</strong> A tela ficou mais limpa, mas o Viz in Tooltip depende de o gestor saber que precisa passar o mouse. Quem não for treinado nunca descobre que aquilo existe e perde a funcionalidade mais rica do dashboard.
     </div>
   </div>
 
-  <!-- RN623 -->
+  <!-- CONFORMIDADE RN623 -->
   <div class="cmp-row green">
     <div class="cell">
       <strong>Conformidade RN623</strong>
-      Verificada manualmente por monitores de qualidade em ~5% das ligações. Sem visualização dedicada no dashboard — aparecia apenas em relatórios avulsos.
+      Verificada manualmente por monitores de qualidade em ~5% das ligações. Sem visualização dedicada no dashboard aparecia apenas em relatórios avulsos.
     </div>
     <div class="cell">
       <strong>Score RN623 como KPI e cor no heatmap</strong>
       Aparece como BAN no topo (ex: 92%) e como dimensão de cor no heatmap de agentes. 100% das ligações avaliadas. O gestor vê o risco regulatório na mesma tela que vê o volume.
     </div>
     <div class="cell" style="background:#e6f9ee; border-top: 3px solid #27ae60;">
-      <strong>✅ A melhor mudança do projeto.</strong> Antes era invisível no dia a dia, aparecia só em relatórios avulsos. Agora está sempre na tela. Para uma empresa regulada pela ANS isso não é conforto — é necessidade.
+      <strong>✅ A melhor mudança do projeto.</strong> Antes era invisível no dia a dia, aparecia só em relatórios avulsos. Agora está sempre na tela. Para uma empresa regulada pela ANS isso não é conforto é necessidade.
     </div>
   </div>
 
-  <!-- NAVEGAÇÃO -->
+  <!-- NAVEGAÇÃO / INTERATIVIDADE -->
   <div class="cmp-row yellow">
     <div class="cell">
       <strong>Navegação entre dados</strong>
@@ -278,7 +284,7 @@
       Clicar em um tema filtra automaticamente todo o painel — KPIs, heatmap e tabela se atualizam em tempo real. Clicar num agente mostra só as ligações dele. Tudo conectado, sem exportar nada.
     </div>
     <div class="cell" style="background:#fff8e1; border-top: 3px solid #f9a825;">
-      <strong>⚠️ Boa, mas com ressalva.</strong> Ótimo para quem sabe usar. Para gestores menos acostumados com BI, a interatividade pode confundir — especialmente se clicarem sem querer e o painel todo mudar sem entenderem por quê. Treinamento é obrigatório.
+      <strong>⚠️ Boa, mas com ressalva.</strong> Ótimo para quem sabe usar. Para gestores menos acostumados com BI, a interatividade pode confundir especialmente se clicarem sem querer e o painel todo mudar sem entenderem por quê. Treinamento é obrigatório.
     </div>
   </div>
 
@@ -336,12 +342,12 @@
     </div>
     <div class="field-card fc-red">
       <div class="field-name">Temas (Categorização Automática)</div>
-      <div class="field-desc">Motivo real da ligação: STATUS_AUTORIZACAO, NEGATIVA_COBERTURA, AGENDAMENTO etc. No tradicional era tabulado manualmente pelo agente. Na IA aparece como gráfico de barras automático.</div>
+      <div class="field-desc">Motivo real da ligação: STATUS_AUTORIZACAO, NEGATIVA_COBERTURA, AGENDAMENTO etc. No tradicional era tabulado manualmente pelo agente — inconsistente. Na IA aparece como gráfico de barras automático.</div>
       <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">IRC Score / Pilares 1–4</div>
-      <div class="field-desc">Índice de qualidade por 4 pilares: Cordialidade, Precisão, Resolução, Empatia. No tradicional avaliado manualmente em ~5% das ligações. Na IA aparece no heatmap para 100% dos atendimentos.</div>
+      <div class="field-desc">Índice de qualidade por 4 pilares: Cordialidade, Precisão, Resolução, Empatia. No tradicional era avaliado manualmente em ~5% das ligações. Na IA aparece no heatmap para 100% dos atendimentos.</div>
       <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
@@ -369,20 +375,20 @@
 
   <div class="calc-grid">
     <div class="calc-card">
-      <div class="calc-title">Taxa de Resolução (FCR)</div>
+      <div class="calc-title">📊 Taxa de Resolução (FCR)</div>
       <div class="calc-desc">Mede eficácia em resolver no primeiro contato. Quanto maior, menor o retrabalho.</div>
       <div class="code-block">SUM(IF [Status Resolução] = 'resolved'
   THEN 1 ELSE 0 END)
 / COUNT([Protocolo])</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title">Taxa de Silêncio (%)</div>
+      <div class="calc-title">🔇 Taxa de Silêncio (%)</div>
       <div class="calc-desc">Percentual da ligação em silêncio. Acima de 30% indica lentidão no sistema ou agente despreparado.</div>
       <div class="code-block">SUM([Silêncio (s)])
 / SUM([Duração (s)])</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title">Jornada Emocional</div>
+      <div class="calc-title">😤 → 😊 Jornada Emocional</div>
       <div class="calc-desc">Categoriza o esforço do agente em reverter clientes frustrados. Identifica os melhores para coaching.</div>
       <div class="code-block">IF [Sent. Inicial] = 'Frustrated'
 AND [Sent. Final] = 'Satisfied'
@@ -397,7 +403,7 @@ ELSE 'Outros'
 END</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title"> Classificação de Risco RN623</div>
+      <div class="calc-title">⚖️ Classificação de Risco RN623</div>
       <div class="calc-desc">Simplifica análise regulatória em 3 níveis. Facilita coloração do Heatmap de conformidade.</div>
       <div class="code-block">IF [Nível Conformidade] = 'Conforme'
   THEN 'Baixo Risco 🟢'
@@ -417,9 +423,8 @@ END</div>
   <div class="sec-sub">Os dois têm os mesmos dados — o que muda é como eles são apresentados.</div>
 
   <div class="summary-grid">
-    <div style="background: #dff3ff; border-radius: 14px; padding: 28px; border-top: 5px solid var(--blue-light);">
+    <div style="background: var(--blue-pale); border-radius: 14px; padding: 28px; border-top: 5px solid var(--blue-mid);">
       <div style="font-size: 1.05em; font-weight: 800; color: var(--blue-dark); margin-bottom: 10px;"> Dashboard Tradicional</div>
-      <div style="font-size: 1.55em; font-weight: 800; color: var(--blue-mid); margin-bottom: 14px;">"Os ingredientes estão aqui."</div>
       <p style="color: var(--muted); font-size: .91em; line-height: 1.6;">
         Dados exatos, auditáveis e confiáveis. O gestor <strong>tem tudo</strong> que precisa — mas precisa ir atrás das respostas ele mesmo, cruzando tabelas e relatórios separados.
       </p>
@@ -432,7 +437,6 @@ END</div>
     </div>
     <div style="background: #dff3ff; border-radius: 14px; padding: 28px; border-top: 5px solid var(--blue-light);">
       <div style="font-size: 1.05em; font-weight: 800; color: var(--blue-dark); margin-bottom: 10px;"> Dashboard com IA</div>
-      <div style="font-size: 1.55em; font-weight: 800; color: var(--blue-light); margin-bottom: 14px;">"O prato já está servido."</div>
       <p style="color: var(--muted); font-size: .91em; line-height: 1.6;">
         Os mesmos dados, apresentados de um jeito que a resposta já está na tela. O heatmap já aponta o agente com problema, o Sankey já mostra a frustração do cliente, o RN623 já sinalizou o risco — <strong>sem o gestor precisar procurar nada.</strong>
       </p>
