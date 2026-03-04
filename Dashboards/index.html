@@ -73,7 +73,7 @@
     .sec-sub { text-align: center; color: var(--muted); font-size: .93em; margin-bottom: 30px; }
     .divider { border: none; border-top: 2px solid var(--border); margin: 48px 0 40px; }
     .col-headers {
-      display: grid; grid-template-columns: 1fr 220px 1fr;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
       gap: 0; margin-bottom: 8px; padding: 0 2px;
     }
     .col-h {
@@ -82,9 +82,8 @@
     }
     .col-h.trad { background: var(--blue-pale); color: var(--blue-dark); }
     .col-h.ia   { background: #dff3ff; color: var(--blue-light); }
-    .col-h.vs   { color: var(--muted); font-size: .82em; display: flex; align-items: center; justify-content: center; }
     .cmp-row {
-      display: grid; grid-template-columns: 1fr 220px 1fr;
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
       gap: 0; margin-bottom: 10px; border-radius: 12px;
       overflow: hidden; box-shadow: 0 2px 8px rgba(11,61,117,.08);
     }
@@ -93,23 +92,9 @@
       gap: 5px; line-height: 1.5; font-size: .92em;
     }
     .cell strong { font-size: .78em; text-transform: uppercase; letter-spacing: .05em; display: block; margin-bottom: 2px; }
-    .verdict {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; padding: 12px 10px; text-align: center; gap: 5px;
-    }
-    .verdict-icon  { font-size: 1.5em; }
-    .verdict-label { font-size: .75em; font-weight: 700; line-height: 1.3; }
     .green .cell    { background: var(--green-bg); border-top: 3px solid var(--green-bdr); }
-    .green .verdict { background: var(--green-bg); color: var(--green-txt); }
     .red   .cell    { background: var(--red-bg);   border-top: 3px solid var(--red-bdr); }
-    .red   .verdict { background: var(--red-bg);   color: var(--red-txt); }
     .yellow .cell   { background: var(--yellow-bg);border-top: 3px solid var(--yellow-bdr); }
-    .yellow .verdict{ background: var(--yellow-bg);color: var(--yellow-txt); }
-    .ghost {
-      background: #f5f5f5; border-top: 3px solid #ddd;
-      display: flex; align-items: center; justify-content: center;
-      color: #bbb; font-style: italic; font-size: .86em; padding: 16px; text-align: center;
-    }
     .tag {
       display: inline-block; padding: 2px 8px; border-radius: 20px;
       font-size: .76em; font-weight: 700; margin-top: 2px;
@@ -153,9 +138,7 @@
     footer strong { color: var(--blue-dark); }
     @media (max-width: 860px) {
       .col-headers { grid-template-columns: 1fr 1fr; }
-      .col-h.vs { display: none; }
       .cmp-row  { grid-template-columns: 1fr 1fr; }
-      .verdict  { display: none; }
       .calc-grid { grid-template-columns: 1fr; }
       .summary-grid { grid-template-columns: 1fr; }
     }
@@ -178,9 +161,9 @@
 
 <div class="legend">
   <span class="legend-title">Como ler:</span>
-  <span class="legend-item"><span class="dot dot-green"></span> Ambos têm (igual)</span>
-  <span class="legend-item"><span class="dot dot-yellow"></span> Parecido, mas diferente</span>
-  <span class="legend-item"><span class="dot dot-red"></span> Só um lado tem</span>
+  <span class="legend-item"><span class="dot dot-green"></span> Boa mudança</span>
+  <span class="legend-item"><span class="dot dot-yellow"></span> Boa, mas com ressalva</span>
+  <span class="legend-item"><span class="dot dot-red"></span> Atenção — risco na mudança</span>
 </div>
 
 <main>
@@ -188,14 +171,14 @@
   <div class="sec-title">Comparação Visual dos Dashboards</div>
   <div class="sec-sub">Como cada informação era apresentada antes — e como passa a ser apresentada com a IA.</div>
 
-  <div class="col-headers" style="grid-template-columns: 1fr 1fr 1fr;">
-    <div class="col-h trad"> Dashboard Tradicional</div>
-    <div class="col-h ia"> Dashboard da IA</div>
-    <div class="col-h" style="background:#f0f4ff; color:#4a5568; font-size:.9em;"> Valeu a mudança?</div>
+  <div class="col-headers">
+    <div class="col-h trad">Dashboard Tradicional</div>
+    <div class="col-h ia">Dashboard da IA</div>
+    <div class="col-h trad" >Opinião</div>
   </div>
 
-  <!-- KPIs PRINCIPAIS -->
-  <div class="cmp-row green" style="grid-template-columns: 1fr 1fr 1fr;">
+  <!-- KPIs -->
+  <div class="cmp-row green">
     <div class="cell">
       <strong>KPIs no topo</strong>
       Volume total, resolução, espera e conformidade exibidos como números simples em linha, sem destaque visual forte.
@@ -204,13 +187,13 @@
       <strong>BANs em destaque</strong>
       Os mesmos 4 números (1540 atendimentos, 85% resolução, 120s espera, 92% conformidade) agora em cartões grandes com ícone e rótulo — leitura instantânea em menos de 5 segundos.
     </div>
-    <div class="cell" style="background:#f0f9ff; border-top: 3px solid #1f8fd1;">
-      <strong>Sim, valeu.</strong> A informação é a mesma, mas o cartão grande força o olho do gestor para o número certo na hora certa. Menos chance de ignorar um número crítico.
+    <div class="cell" style="background:#e6f9ee; border-top: 3px solid #27ae60;">
+      <strong>✅ Boa mudança.</strong> A informação é a mesma, mas o cartão grande força o olho do gestor para o número certo. O único contra é que em telas menores os cartões ocupam espaço e empurram os gráficos para baixo.
     </div>
   </div>
 
-  <!-- SENTIMENTO / SANKEY -->
-  <div class="cmp-row green" style="grid-template-columns: 1fr 1fr 1fr;">
+  <!-- SANKEY -->
+  <div class="cmp-row green">
     <div class="cell">
       <strong>Jornada do cliente</strong>
       Não havia visualização de fluxo emocional. O gestor via apenas se a ligação foi "resolvida" ou não — sem saber como o cliente se sentiu durante o processo.
@@ -219,13 +202,13 @@
       <strong>Diagrama de Sankey (fluxo de sentimento)</strong>
       Mostra visualmente quantos clientes entraram Frustrated, Confused ou Satisfied — e para onde cada grupo foi ao final. Dá pra ver de cara se a operação está revertendo ou piorando o humor dos clientes.
     </div>
-    <div class="cell" style="background:#f0f9ff; border-top: 3px solid #1f8fd1;">
-      <strong>Sim, valeu.</strong> É uma visualização que simplesmente não existia antes. Transforma algo invisível (emoção do cliente) em dado visual imediato.
+    <div class="cell" style="background:#e6f9ee; border-top: 3px solid #27ae60;">
+      <strong>✅ Boa mudança.</strong> Informação que não existia antes, então não há o que comparar negativamente. Qualquer dado sobre emoção do cliente é melhor que nenhum.
     </div>
   </div>
 
-  <!-- TEMAS / BARRAS -->
-  <div class="cmp-row green" style="grid-template-columns: 1fr 1fr 1fr;">
+  <!-- TEMAS -->
+  <div class="cmp-row green">
     <div class="cell">
       <strong>Motivos de contato</strong>
       Lista ou tabela simples com os temas tabulados manualmente pelos agentes. Inconsistente e sujeito a erro humano.
@@ -234,13 +217,13 @@
       <strong>Gráfico de barras por tema (IA categoriza)</strong>
       Barras horizontais com os temas identificados automaticamente pela IA — NEGATIVA_COBERTURA, STATUS_AUTORIZACAO, AGENDAMENTO etc. — coloridas pela proporção de sentimento negativo.
     </div>
-    <div class="cell" style="background:#f0f9ff; border-top: 3px solid #1f8fd1;">
-      <strong>Sim, valeu.</strong> Além de mais confiável (sem depender do agente), a cor por sentimento negativo transforma a barra em um alerta visual — o gestor vê de imediato qual tema está gerando mais frustração.
+    <div class="cell" style="background:#e6f9ee; border-top: 3px solid #27ae60;">
+      <strong>✅ Boa mudança.</strong> Mais confiável e mais visual. O único risco é a IA categorizar um tema errado — e o gestor confiar na barra sem questionar.
     </div>
   </div>
 
-  <!-- HEATMAP DE AGENTES -->
-  <div class="cmp-row yellow" style="grid-template-columns: 1fr 1fr 1fr;">
+  <!-- HEATMAP -->
+  <div class="cmp-row yellow">
     <div class="cell">
       <strong>Performance de agentes</strong>
       Tabela com métricas de cada agente: volume, TMA, taxa de resolução. Linhas e colunas — requer leitura linha por linha para identificar quem está mal.
@@ -249,13 +232,13 @@
       <strong>Heatmap (mapa de calor)</strong>
       Grade colorida onde cada célula é um agente vs. critério de qualidade. Cores quentes (laranja/vermelho) saltam aos olhos imediatamente — o gestor não precisa ler nada para saber quem precisa de atenção.
     </div>
-    <div class="cell" style="background:#fffbeb; border-top: 3px solid #f9a825;">
-      <strong>Mudou bastante, para melhor.</strong> A tabela ainda existe (para detalhe), mas o heatmap age como um alarme visual — identifica o problema antes mesmo de o gestor terminar de carregar a tela.
+    <div class="cell" style="background:#fff8e1; border-top: 3px solid #f9a825;">
+      <strong>⚠️ Boa, mas com ressalva.</strong> O heatmap é visualmente superior para identificar problemas rapidamente. Porém a tabela não deveria sumir — o agente que quer entender o próprio desempenho em detalhe ainda precisa dela.
     </div>
   </div>
 
-  <!-- TABELA DE DETALHES -->
-  <div class="cmp-row yellow" style="grid-template-columns: 1fr 1fr 1fr;">
+  <!-- TABELA OCULTA -->
+  <div class="cmp-row yellow">
     <div class="cell">
       <strong>Detalhe das ligações</strong>
       Tabela sempre visível com todas as ligações, protocolos, CPFs e dados granulares. Muito dado na tela ao mesmo tempo — poluição visual para um gestor que quer ver tendências.
@@ -264,13 +247,13 @@
       <strong>Tabela oculta + Viz in Tooltip</strong>
       A tabela de detalhes fica escondida por padrão. Quando o gestor clica num agente ou tema, ela aparece filtrada. E ao passar o mouse em qualquer ponto do gráfico, uma janela mostra o resumo da ligação gerado pela IA.
     </div>
-    <div class="cell" style="background:#fffbeb; border-top: 3px solid #f9a825;">
-      <strong>Mudou, e a tela ficou muito mais limpa.</strong> O dado continua lá — só aparece quando o gestor realmente precisa dele. Menos ruído, mais foco.
+    <div class="cell" style="background:#fff8e1; border-top: 3px solid #f9a825;">
+      <strong>⚠️ Boa, mas com ressalva.</strong> A tela ficou mais limpa, mas o Viz in Tooltip depende de o gestor saber que precisa passar o mouse. Quem não for treinado nunca descobre que aquilo existe — e perde a funcionalidade mais rica do dashboard.
     </div>
   </div>
 
-  <!-- CONFORMIDADE RN623 -->
-  <div class="cmp-row red" style="grid-template-columns: 1fr 1fr 1fr;">
+  <!-- RN623 -->
+  <div class="cmp-row green">
     <div class="cell">
       <strong>Conformidade RN623</strong>
       Verificada manualmente por monitores de qualidade em ~5% das ligações. Sem visualização dedicada no dashboard — aparecia apenas em relatórios avulsos.
@@ -279,13 +262,13 @@
       <strong>Score RN623 como KPI e cor no heatmap</strong>
       Aparece como BAN no topo (ex: 92%) e como dimensão de cor no heatmap de agentes. 100% das ligações avaliadas. O gestor vê o risco regulatório na mesma tela que vê o volume.
     </div>
-    <div class="cell" style="background:#fdecea; border-top: 3px solid #e53935;">
-      <strong>Mudança crítica.</strong> Antes era invisível no dia a dia. Agora é um número que está sempre na tela. Para uma empresa regulada pela ANS, essa mudança sozinha já justifica o projeto.
+    <div class="cell" style="background:#e6f9ee; border-top: 3px solid #27ae60;">
+      <strong>✅ A melhor mudança do projeto.</strong> Antes era invisível no dia a dia, aparecia só em relatórios avulsos. Agora está sempre na tela. Para uma empresa regulada pela ANS isso não é conforto — é necessidade.
     </div>
   </div>
 
-  <!-- NAVEGAÇÃO / INTERATIVIDADE -->
-  <div class="cmp-row red" style="grid-template-columns: 1fr 1fr 1fr;">
+  <!-- NAVEGAÇÃO -->
+  <div class="cmp-row yellow">
     <div class="cell">
       <strong>Navegação entre dados</strong>
       Dashboard estático. Para cruzar informações (ex: ver quais agentes atenderam ligações sobre um tema específico), era necessário exportar para Excel e filtrar manualmente.
@@ -294,8 +277,8 @@
       <strong>Dashboard Actions (filtros interativos)</strong>
       Clicar em um tema filtra automaticamente todo o painel — KPIs, heatmap e tabela se atualizam em tempo real. Clicar num agente mostra só as ligações dele. Tudo conectado, sem exportar nada.
     </div>
-    <div class="cell" style="background:#fdecea; border-top: 3px solid #e53935;">
-      <strong>Mudança grande.</strong> Transforma o dashboard de um relatório em uma ferramenta de investigação. O gestor consegue ir do geral ao detalhe em segundos, sem sair da tela.
+    <div class="cell" style="background:#fff8e1; border-top: 3px solid #f9a825;">
+      <strong>⚠️ Boa, mas com ressalva.</strong> Ótimo para quem sabe usar. Para gestores menos acostumados com BI, a interatividade pode confundir — especialmente se clicarem sem querer e o painel todo mudar sem entenderem por quê. Treinamento é obrigatório.
     </div>
   </div>
 
@@ -303,7 +286,7 @@
 
   <!-- DICIONÁRIO -->
   <div class="sec-title">Dicionário de Dados</div>
-  <div class="sec-sub">Cada campo explicado no contexto de saúde suplementar — e em qual versão ele existe.</div>
+  <div class="sec-sub">Cada campo explicado no contexto de saúde suplementar — e como ele é apresentado em cada versão.</div>
 
   <div class="fields-grid">
     <div class="field-card fc-green">
@@ -328,53 +311,53 @@
     </div>
     <div class="field-card fc-yellow">
       <div class="field-name">Silêncio (s) → Taxa de Silêncio (%)</div>
-      <div class="field-desc">Tradicional: segundos brutos. IA: percentual da duração total, cruzado com Scatter Plot.</div>
-      <div class="field-owner"><span class="tag tag-yellow">Evolução na IA</span></div>
+      <div class="field-desc">Dado existe nos dois. Tradicional: exibe segundos brutos, sem contexto. IA: transforma em percentual da duração e cruza com outros dados no Scatter Plot — muito mais acionável.</div>
+      <div class="field-owner"><span class="tag tag-yellow">Apresentação diferente na IA</span></div>
     </div>
     <div class="field-card fc-yellow">
       <div class="field-name">Status Resolução → Taxa de Resolução (FCR)</div>
-      <div class="field-desc">Tradicional: tabulação manual. IA: campo calculado cruzado com sentimento final para validar a resolução real.</div>
-      <div class="field-owner"><span class="tag tag-yellow">Evolução na IA</span></div>
+      <div class="field-desc">Dado existe nos dois. Tradicional: tabulação manual pelo agente, sem validação. IA: calculado automaticamente e cruzado com sentimento final para confirmar se a resolução foi real.</div>
+      <div class="field-owner"><span class="tag tag-yellow">Apresentação diferente na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">Sentimento Inicial</div>
-      <div class="field-desc">Estado emocional ao entrar: Frustrated, Confused, Curious, Neutral…</div>
-      <div class="field-owner"><span class="tag tag-red">Só na IA</span></div>
+      <div class="field-desc">Estado emocional do cliente ao entrar: Frustrated, Confused, Curious, Neutral… Dado extraído do áudio pela IA — sem visualização dedicada no dashboard tradicional.</div>
+      <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">Sentimento Final</div>
-      <div class="field-desc">Estado emocional ao desligar. Mede se o atendimento melhorou ou piorou o humor do beneficiário.</div>
-      <div class="field-owner"><span class="tag tag-red">Só na IA</span></div>
+      <div class="field-desc">Estado emocional ao desligar. Mede se o atendimento melhorou ou piorou o humor do beneficiário. Sem visualização dedicada no dashboard tradicional.</div>
+      <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">Variação de Sentimento</div>
-      <div class="field-desc">Jornada emocional completa. Usada no Diagrama de Sankey para mostrar quantos clientes foram revertidos.</div>
-      <div class="field-owner"><span class="tag tag-red">Só na IA</span></div>
+      <div class="field-desc">Jornada emocional completa do cliente. Usada no Diagrama de Sankey — visualização que não existia no dashboard tradicional.</div>
+      <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">Temas (Categorização Automática)</div>
-      <div class="field-desc">Motivo real da ligação: STATUS_AUTORIZACAO, NEGATIVA_COBERTURA, AGENDAMENTO etc.</div>
-      <div class="field-owner"><span class="tag tag-red">Só na IA</span></div>
+      <div class="field-desc">Motivo real da ligação: STATUS_AUTORIZACAO, NEGATIVA_COBERTURA, AGENDAMENTO etc. No tradicional era tabulado manualmente pelo agente. Na IA aparece como gráfico de barras automático.</div>
+      <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">IRC Score / Pilares 1–4</div>
-      <div class="field-desc">Índice de qualidade automático: Cordialidade, Precisão, Resolução, Empatia — com justificativa em texto.</div>
-      <div class="field-owner"><span class="tag tag-red">Só na IA</span></div>
+      <div class="field-desc">Índice de qualidade por 4 pilares: Cordialidade, Precisão, Resolução, Empatia. No tradicional avaliado manualmente em ~5% das ligações. Na IA aparece no heatmap para 100% dos atendimentos.</div>
+      <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">Score RN623 / Nível de Conformidade</div>
-      <div class="field-desc">Conformidade com a RN623 da ANS. Classifica: Conforme, Risco Moderado ou Risco Crítico.</div>
-      <div class="field-owner"><span class="tag tag-red">Só na IA</span></div>
+      <div class="field-desc">Conformidade com a RN623 da ANS. No tradicional aparecia só em relatórios avulsos. Na IA é um KPI fixo no topo do dashboard e dimensão de cor no heatmap.</div>
+      <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">Resumo / Diálogo / Justificativas</div>
-      <div class="field-desc">Resumo da ligação, trechos transcritos e justificativa de cada nota. Acessível via tooltip no Tableau.</div>
-      <div class="field-owner"><span class="tag tag-red">Só na IA</span></div>
+      <div class="field-desc">Resumo da ligação, trechos transcritos e justificativa de cada nota. No tradicional exigia ouvir o áudio. Na IA aparece diretamente no tooltip ao passar o mouse no gráfico.</div>
+      <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
     <div class="field-card fc-red">
       <div class="field-name">Observações de Risco</div>
-      <div class="field-desc">Alertas: risco de judicialização, reclamação na ANS, violações de prazo detectadas na transcrição.</div>
-      <div class="field-owner"><span class="tag tag-red">Só na IA</span></div>
+      <div class="field-desc">Alertas de risco de judicialização, reclamação na ANS e violações de prazo. No tradicional só apareciam após auditoria humana. Na IA são gerados automaticamente na transcrição.</div>
+      <div class="field-owner"><span class="tag tag-red">Visualizado apenas na IA</span></div>
     </div>
   </div>
 
@@ -431,14 +414,14 @@ END</div>
 
   <!-- RESUMO FINAL -->
   <div class="sec-title">Em Uma Frase: A Diferença Fundamental</div>
-  <div class="sec-sub">O que cada versão responde quando o gestor abre o dashboard.</div>
+  <div class="sec-sub">Os dois têm os mesmos dados — o que muda é como eles são apresentados.</div>
 
   <div class="summary-grid">
-    <div style="background: #dff3ff; border-radius: 14px; padding: 28px; border-top: 5px solid var(--blue-mid);">
+    <div style="background: #dff3ff; border-radius: 14px; padding: 28px; border-top: 5px solid var(--blue-light);">
       <div style="font-size: 1.05em; font-weight: 800; color: var(--blue-dark); margin-bottom: 10px;">📋 Dashboard Tradicional</div>
-      <div style="font-size: 1.55em; font-weight: 800; color: var(--blue-mid); margin-bottom: 14px;">"Como foi o dia?"</div>
+      <div style="font-size: 1.55em; font-weight: 800; color: var(--blue-mid); margin-bottom: 14px;">"Os ingredientes estão aqui."</div>
       <p style="color: var(--muted); font-size: .91em; line-height: 1.6;">
-        Base sólida, auditável e 100% confiável para a ANS. O gestor sabe <strong>o que aconteceu</strong>, mas não sabe <em>por quê</em>.
+        Dados exatos, auditáveis e confiáveis. O gestor <strong>tem tudo</strong> que precisa — mas precisa ir atrás das respostas ele mesmo, cruzando tabelas e relatórios separados.
       </p>
       <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px;">
         <span class="tag tag-blue">Volume</span>
@@ -449,9 +432,9 @@ END</div>
     </div>
     <div style="background: #dff3ff; border-radius: 14px; padding: 28px; border-top: 5px solid var(--blue-light);">
       <div style="font-size: 1.05em; font-weight: 800; color: var(--blue-dark); margin-bottom: 10px;">🤖 Dashboard com IA</div>
-      <div style="font-size: 1.55em; font-weight: 800; color: var(--blue-light); margin-bottom: 14px;">"Por que foi assim?"</div>
+      <div style="font-size: 1.55em; font-weight: 800; color: var(--blue-light); margin-bottom: 14px;">"O prato já está servido."</div>
       <p style="color: var(--muted); font-size: .91em; line-height: 1.6;">
-        Camada analítica sobre o tradicional. O gestor entende o <strong>comportamento do beneficiário</strong> e sabe exatamente onde intervir.
+        Os mesmos dados, apresentados de um jeito que a resposta já está na tela. O heatmap já aponta o agente com problema, o Sankey já mostra a frustração do cliente, o RN623 já sinalizou o risco — <strong>sem o gestor precisar procurar nada.</strong>
       </p>
       <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px;">
         <span class="tag tag-blue">Sentimento</span>
