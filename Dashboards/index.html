@@ -369,20 +369,20 @@
 
   <div class="calc-grid">
     <div class="calc-card">
-      <div class="calc-title">📊 Taxa de Resolução (FCR)</div>
+      <div class="calc-title">Taxa de Resolução (FCR)</div>
       <div class="calc-desc">Mede eficácia em resolver no primeiro contato. Quanto maior, menor o retrabalho.</div>
       <div class="code-block">SUM(IF [Status Resolução] = 'resolved'
   THEN 1 ELSE 0 END)
 / COUNT([Protocolo])</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title">🔇 Taxa de Silêncio (%)</div>
+      <div class="calc-title">Taxa de Silêncio (%)</div>
       <div class="calc-desc">Percentual da ligação em silêncio. Acima de 30% indica lentidão no sistema ou agente despreparado.</div>
       <div class="code-block">SUM([Silêncio (s)])
 / SUM([Duração (s)])</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title">😤 → 😊 Jornada Emocional</div>
+      <div class="calc-title">Jornada Emocional</div>
       <div class="calc-desc">Categoriza o esforço do agente em reverter clientes frustrados. Identifica os melhores para coaching.</div>
       <div class="code-block">IF [Sent. Inicial] = 'Frustrated'
 AND [Sent. Final] = 'Satisfied'
@@ -397,7 +397,7 @@ ELSE 'Outros'
 END</div>
     </div>
     <div class="calc-card">
-      <div class="calc-title">⚖️ Classificação de Risco RN623</div>
+      <div class="calc-title"> Classificação de Risco RN623</div>
       <div class="calc-desc">Simplifica análise regulatória em 3 níveis. Facilita coloração do Heatmap de conformidade.</div>
       <div class="code-block">IF [Nível Conformidade] = 'Conforme'
   THEN 'Baixo Risco 🟢'
@@ -418,7 +418,7 @@ END</div>
 
   <div class="summary-grid">
     <div style="background: #dff3ff; border-radius: 14px; padding: 28px; border-top: 5px solid var(--blue-light);">
-      <div style="font-size: 1.05em; font-weight: 800; color: var(--blue-dark); margin-bottom: 10px;">📋 Dashboard Tradicional</div>
+      <div style="font-size: 1.05em; font-weight: 800; color: var(--blue-dark); margin-bottom: 10px;"> Dashboard Tradicional</div>
       <div style="font-size: 1.55em; font-weight: 800; color: var(--blue-mid); margin-bottom: 14px;">"Os ingredientes estão aqui."</div>
       <p style="color: var(--muted); font-size: .91em; line-height: 1.6;">
         Dados exatos, auditáveis e confiáveis. O gestor <strong>tem tudo</strong> que precisa — mas precisa ir atrás das respostas ele mesmo, cruzando tabelas e relatórios separados.
@@ -431,7 +431,7 @@ END</div>
       </div>
     </div>
     <div style="background: #dff3ff; border-radius: 14px; padding: 28px; border-top: 5px solid var(--blue-light);">
-      <div style="font-size: 1.05em; font-weight: 800; color: var(--blue-dark); margin-bottom: 10px;">🤖 Dashboard com IA</div>
+      <div style="font-size: 1.05em; font-weight: 800; color: var(--blue-dark); margin-bottom: 10px;"> Dashboard com IA</div>
       <div style="font-size: 1.55em; font-weight: 800; color: var(--blue-light); margin-bottom: 14px;">"O prato já está servido."</div>
       <p style="color: var(--muted); font-size: .91em; line-height: 1.6;">
         Os mesmos dados, apresentados de um jeito que a resposta já está na tela. O heatmap já aponta o agente com problema, o Sankey já mostra a frustração do cliente, o RN623 já sinalizou o risco — <strong>sem o gestor precisar procurar nada.</strong>
